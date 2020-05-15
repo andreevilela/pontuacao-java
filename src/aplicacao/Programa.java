@@ -12,7 +12,7 @@ public class Programa {
 		Scanner sc = new Scanner(System.in);
 		
 		int qtdCompras, qtdAtraso;
-		double ticket, volumeDeCompras, ptsCompras;
+		double ticket, volumeDeCompras, ptsCompras, ptsInadimplencia, ptsPagamento;
 		char formaDePagamento;
 		
 		System.out.println("SISTEMA DE PERFIL DE CLIENTE");
@@ -43,8 +43,25 @@ public class Programa {
 			ptsCompras = 60;
 		}
 		
+		if (qtdAtraso > 1 || qtdCompras == 0) {
+			ptsInadimplencia = 0;
+		} else if (qtdCompras > 0 && qtdAtraso >= 1) {
+			ptsInadimplencia = 15;
+		} else {
+			ptsInadimplencia = 30;
+		}
+		
+		if (formaDePagamento == 'D' || formaDePagamento == 'd') {
+			ptsPagamento = 5;
+		} else {
+			ptsPagamento = 10;
+		}
+		
 		System.out.println();
 		System.out.println("Score de volume de compras = " + ptsCompras + " pontos");
+		System.out.println();
+		System.out.println("Score de inadimplência = " + ptsInadimplencia + " pontos");
+		System.out.println("Score de forma de pagamento " + ptsPagamento);
 		
 	}
 
