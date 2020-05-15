@@ -12,7 +12,7 @@ public class Programa {
 		Scanner sc = new Scanner(System.in);
 		
 		int qtdCompras, qtdAtraso;
-		double ticket;
+		double ticket, volumeDeCompras, ptsCompras;
 		char formaDePagamento;
 		
 		System.out.println("SISTEMA DE PERFIL DE CLIENTE");
@@ -30,6 +30,21 @@ public class Programa {
 		qtdAtraso = sc.nextInt();
 		System.out.println("A maioria das compras foi em dinheiro, cartão, ou boleto (D/C/B)?");
 		formaDePagamento = sc.next().charAt(0);
+		
+		volumeDeCompras = ticket * qtdCompras;
+		
+		if (volumeDeCompras <= 0) {
+			ptsCompras = 0;
+		} else if (volumeDeCompras <= 3000 && qtdCompras > 2) {
+			ptsCompras = 40;
+		} else if (volumeDeCompras <= 3000) {
+			ptsCompras = 20;
+		} else {
+			ptsCompras = 60;
+		}
+		
+		System.out.println();
+		System.out.println("Score de volume de compras = " + ptsCompras + " pontos");
 		
 	}
 
