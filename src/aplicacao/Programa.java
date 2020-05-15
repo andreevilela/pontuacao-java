@@ -11,9 +11,10 @@ public class Programa {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int qtdCompras, qtdAtraso;
-		double ticket, volumeDeCompras, ptsCompras, ptsInadimplencia, ptsPagamento;
+		int qtdCompras, qtdAtraso, ptsCompras, ptsInadimplencia, ptsPagamento, scoreTotal;
+		double ticket, volumeDeCompras;
 		char formaDePagamento;
+		String classificacao;
 		
 		System.out.println("SISTEMA DE PERFIL DE CLIENTE");
 		System.out.println("--------------------------------");
@@ -57,11 +58,25 @@ public class Programa {
 			ptsPagamento = 10;
 		}
 		
+		scoreTotal = ptsCompras + ptsInadimplencia + ptsPagamento;
+		
+		if (scoreTotal <= 25) {
+			classificacao = "BRONZE";
+		} else if (scoreTotal > 25 && scoreTotal <= 75) {
+			classificacao = "PRATA";
+		} else {
+			classificacao = "OURO";
+		}
+		
 		System.out.println();
 		System.out.println("Score de volume de compras = " + ptsCompras + " pontos");
 		System.out.println();
 		System.out.println("Score de inadimplência = " + ptsInadimplencia + " pontos");
 		System.out.println("Score de forma de pagamento " + ptsPagamento);
+		System.out.println();
+		System.out.println("Classificação final = CLIENTE " + classificacao);
+		
+		sc.close();
 		
 	}
 
